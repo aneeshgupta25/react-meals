@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         'ralewayFont': ['"Raleway"', 'sans-serif'],
         'latoFont': ['"Lato"', 'sans-serif']
+      },
+      gridTemplateColumns: {
+        'auto-fit': 'repeat(auto-fit, minmax(20rem, 1fr))'
       }
     },
   },
