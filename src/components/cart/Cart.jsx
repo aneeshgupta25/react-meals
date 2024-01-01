@@ -1,4 +1,4 @@
-import Modal from "../Modal";
+import Modal from "../UI/Modal";
 import { useContext } from "react";
 import CartContext from "../../store/CartContext";
 import UserProgressContext from "../../store/UserProgressContext";
@@ -17,17 +17,14 @@ export default function Cart() {
   return (
     <Modal
       open={progressContext.progress === "cart"}
-      onClose={() => progressContext.hideCart()}
+      onClose={() =>
+        progressContext.progress === "cart" ? progressContext.hideCart() : null
+      }
     >
       <h2 className="my-4 mx-0">Your Cart</h2>
       <ul className="list-none my-2 mx-0 p-0">
         {cartContext.items.map((item) => {
-          return (
-            <CartItem
-              key={item.id}
-              item={item}
-            />
-          );
+          return <CartItem key={item.id} item={item} />;
         })}
       </ul>
       <p className="flex justify-end my-8 mx-0 text-[1.15rem] font-bold text-[#46443c]">
@@ -41,12 +38,14 @@ export default function Cart() {
         >
           Close
         </Button>
-        {cartContext.items.length !== 0 && <Button
-          onClick={() => progressContext.hideCart()}
-          className="text-[#1d1a16]"
-        >
-          Go to checkout
-        </Button>}
+        {cartContext.items.length !== 0 && (
+          <Button
+            onClick={() => progressContext.showCheckout()}
+            className="text-[#1d1a16]"
+          >
+            Go to checkout
+          </Button>
+        )}
       </p>
     </Modal>
   );
