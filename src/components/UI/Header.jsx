@@ -1,10 +1,12 @@
-import logo from "../assets/logo.jpg";
-import Button from "./UI/Button";
+import logo from "../../assets/logo.jpg";
+import Button from "./Button";
 import { useContext } from "react";
-import CartContext from "../store/CartContext";
+import CartContext from "../../store/CartContext";
+import UserProgressContext from "../../store/UserProgressContext";
 
 export default function Header() {
   const cartContext = useContext(CartContext);
+  const progressContext = useContext(UserProgressContext)
   const totalNumberOfItems = cartContext.items.reduce((total, item) => {
     return total + item.quantity;
   }, 0);
@@ -21,7 +23,7 @@ export default function Header() {
         </h1>
       </div>
       <nav>
-        <Button textOnly className="text-[1.5rem] font-latoFont">
+        <Button textOnly onClick={() => progressContext.showCart()} className="text-[1.5rem] font-latoFont">
           Cart ({totalNumberOfItems})
         </Button>
       </nav>
