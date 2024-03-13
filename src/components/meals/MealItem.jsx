@@ -10,7 +10,7 @@ export default function MealItem({ meal }) {
       <article className="h-[100%] flex flex-col justify-between">
         <img
           className="w-[100%] h-[20rem] object-cover"
-          src={`http://localhost:3000/${meal.image}`}
+          src={`/${meal.image}`}
           alt={meal.name}
         />
         <div>

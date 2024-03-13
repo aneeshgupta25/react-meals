@@ -18,7 +18,7 @@ export default function Checkout() {
   const cartContext = useContext(CartContext);
   const progressContext = useContext(UserProgressContext);
   const { data, error, isLoading: isSending, sendRequest, clearData } = useHttp(
-    "http://localhost:3000/orders",
+    "/orders",
     config,
     undefined
   );

@@ -2,7 +2,6 @@ const fs = require("fs/promises");
 
 const bodyParser = require("body-parser");
 const express = require("express");
-const path = require("path");
 
 const app = express();
 
